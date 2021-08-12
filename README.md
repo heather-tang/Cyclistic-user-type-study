@@ -4,7 +4,7 @@ Code used to solve business tasks posed in case study 01 for a bike-share compan
 This file includes first glimpse at the dataset for 2021 Jun.
 The major question to be answered is "how do annual members and casual riders use Cyclistic bikes different".
 
-In Prepare phase, two columns are suggested to be added in the table: 1) ride_length and 2)day_of_week.
+In Process phase, two columns are suggested to be added in the table: 1) ride_length and 2)day_of_week.
 It was suggested in GDAC course to open with Google Sheets the dataset but due to its giant size for Sheets or Excel, 
 I opted to explore the data with SQL.
 
