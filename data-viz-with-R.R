@@ -7,19 +7,16 @@ df <- read_csv("C:/Users/Daniel-Windows/Downloads/case-study-1-bike-share/aggreg
 # Make a smaller table and add some columns with mutate() 
 # Use make_date() to create a short date
 
-rides <- select(df, ride_id, started_at, ended_at, 
+rides<- select(df, ride_id, started_at, ended_at, 
                 member_casual) %>% 
   mutate(year = as.integer(year(started_at)), 
          month = as.integer(month(started_at)),
          day = day(started_at), 
          dow = wday(started_at),
          length = ended_at - started_at) %>% 
-  mutate(md = make_date(year, month))
+  mutate(md = make_date(year, month)) %>% 
+  filter(length > 0)
 
-
-
-# rides %>% 
-#   filter(length == 0)
 
 # Futher trimmed the table
 
@@ -39,7 +36,7 @@ ggplot(slim_count) +
 
 
 # Check how the length of ride change over the past 12 months
-slim_length <- summarize(slim_group, avg_length = mean(length))
+slim_length <- summarize(slim_group, count = n(), avg_length = mean(length))
 
 ggplot(slim_length) + 
   geom_line(mapping=aes(x=md, y=avg_length/60, color = member_casual)) +
@@ -47,6 +44,22 @@ ggplot(slim_length) +
   ylab("length of ride, min") +
   xlab("Jul 2020 through Jun 2021")
 
+# check in which hour most rides occur
+slim_hour <- mutate(slim, hour = as.integer(hour(rides$started_at))) 
+slim_hour_count <- group_by(slim_hour, hour) %>% 
+  summarize(count = n())
+
+ggplot(slim_hour_grouped) + 
+  geom_point(mapping = aes(x = hour, y = count))
+
+# Check the distribution of length of ride
+# Because most rides are shorter than 200 min, 
+# I filtered the data to exclude those longer
+slim_filtered <- filter (slim, length < 12000)
+
+ggplot(slim_filtered) + 
+  geom_histogram(mapping = aes(x=length/60), bindwith = 10) +
+  xlab("length of ride, min")
 
 # Check how total rides vary through the week over the past 12 months
 slim_dow <- group_by(slim, dow, member_casual) %>% 
@@ -73,4 +86,3 @@ ggplot(summary) +
   ylab("Average ride length, min") +
   xlab("Day of week") +
   labs(title = "Average ride length by week of day")
-
