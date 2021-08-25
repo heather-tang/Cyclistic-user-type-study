@@ -15,4 +15,4 @@ During the importing process, an error prompted on the data type of nvarchar for
 Turns out data stored in cols *start_station_name* and *end_station_name* exceeded the storage limit of the default type nvarchar(50).
 I changed them to nvarchar(max) as a solution. 
 
-[SQL Server data types] for reference. (https://www.w3schools.com/sql/sql_datatypes.asp)
+[SQL Server data types](https://www.w3schools.com/sql/sql_datatypes.asp) for reference. 
