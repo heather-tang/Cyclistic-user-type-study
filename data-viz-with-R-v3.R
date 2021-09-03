@@ -1,5 +1,5 @@
-# Package installing ------------------------------------------------------
-# Install required packages
+# Package importing ------------------------------------------------------
+# Import required packages
 # tidyverse for data import and wrangling
 # libridate for date functions
 # ggplot for visualization
@@ -8,7 +8,7 @@ library(tidyverse) # helps wrangle data
 library(lubridate) # helps wrangle data attirbutes
 library(ggplot2) # helps visualize date
 getwd() # displays working directory
-setwd("/Users/Daniel-Windows/Downloads/case-study-1-bike-share/202007-202106-divvy-tripdata")
+setwd("/Downloads/case-study-1-bike-share/202007-202106-divvy-tripdata")
 # sets working directory to simply calls to data
 
 
