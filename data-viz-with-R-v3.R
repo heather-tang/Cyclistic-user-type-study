@@ -9,7 +9,7 @@ library(lubridate) # helps wrangle data attirbutes
 library(ggplot2) # helps visualize date
 getwd() # displays working directory
 setwd("/Downloads/case-study-1-bike-share/202007-202106-divvy-tripdata")
-# sets working directory to simply calls to data
+# sets working directory to simplify calls to data
 
 
 # STEP 1: IMPORT DATA -----------------------------------------------------
